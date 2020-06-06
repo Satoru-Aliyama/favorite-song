@@ -2,19 +2,19 @@
     <div class="index">
             
            
-                <div class="card" v-for="(smoothie,id) in smoothies" :key="id">
+                <div class="card" v-for="(Song,id) in Songs" :key="id">
                     
                     <div class="card-content">
-                        <i class="material-icons delete" @click="deleteSmoothie(smoothie.id)">delete</i>
-                        <h2>{{smoothie.title}}</h2>
-                        <ul class="ingredients">
-                            <li v-for="(ingredient, index) in smoothie.ingredients" :key="index">
-                                <span class="chip">{{ingredient}}</span>
+                        <i class="material-icons delete" @click="deleteSmoothie(Song.id)">delete</i>
+                        <h2>{{Song.title}}</h2>
+                        <ul class="songs">
+                            <li v-for="(song, index) in Song.songs" :key="index">
+                                <span class="chip">{{song}}</span>
                             </li>
                         </ul>
                     </div>
                     <span class="btn-floating btn-large halfway-fab pink">
-                        <router-link :to="{ name: 'EditSmoothie',params: {song_slug: smoothie.slug}}">
+                        <router-link :to="{ name: 'EditSong',params: {song_slug: Song.slug}}">
                             <i class="material-icons edit">edit</i>
                         </router-link>
                     </span>
@@ -31,28 +31,28 @@ export default {
     name: 'index',
     data() {
         return {
-            smoothies: []
+            Songs: []
         }
     },
     methods: {
         deleteSmoothie(id) {
-            // this.smoothies.splice(index , 1);
+            // this.Songs.splice(index , 1);
            //delete doc from firebase
-           db.collection('smoothies').doc(id).delete()
+           db.collection('songs').doc(id).delete()
            .then(() => {
-               this.smoothies = this.smoothies.filter(smoothie => {
-                   return smoothie.id != id;
+               this.Songs = this.Songs.filter(Song => {
+                   return Song.id != id;
                }) 
            })
         }
     },
     created() {
         //fetch data from f the firestore
-        db.collection('smoothies').get().then(snapshot => {
+        db.collection('songs').get().then(snapshot => {
             snapshot.forEach(doc => {
-                let smoothie = doc.data()
-                smoothie.id = doc.id
-                this.smoothies.push(smoothie)
+                let Song = doc.data()
+                Song.id = doc.id
+                this.Songs.push(Song)
             });
         })
     },
@@ -88,7 +88,7 @@ export default {
             margin-top: 0;
         }
 
-        & .ingredients {
+        & .songs {
             margin: 30px auto;
             display: flex;
             flex-wrap: wrap ;

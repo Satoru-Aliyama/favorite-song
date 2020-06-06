@@ -6,7 +6,7 @@
                     <span class="nav-title">Favorite songs</span>
                 </router-link> 
                 <a href="" class="btn-floating btn-large halfway-fab pink">
-                    <router-link :to="{ name: 'AddSmoothie' }">
+                    <router-link :to="{ name: 'AddSong' }">
                         <i class="material-icons">add</i>
                     </router-link>
                 </a>

@@ -4,8 +4,8 @@
       <Navbar></Navbar>
       <router-view>
         <Index></Index>
-        <AddSmoothie></AddSmoothie>
-        <EditSmoothie></EditSmoothie>
+        <AddSong></AddSong>
+        <EditSong></EditSong>
       </router-view>
       <Footer></Footer>
     </div>
@@ -16,15 +16,15 @@
 import Navbar from './views/Navbar';
 import Footer from './views/Footer';
 import Index from './views/Index';
-import AddSmoothie from '@/views/AddSmoothie.vue';
-import EditSmoothie from '@/views/EditSmoothie.vue';
+import AddSong from '@/views/AddSong.vue';
+import EditSong from '@/views/EditSong.vue';
 export default {
   components:{
     Navbar,
     Footer,
     Index,
-    EditSmoothie,
-    AddSmoothie,
+    EditSong,
+    AddSong,
   }
 }
 </script>
